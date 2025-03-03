@@ -1,8 +1,14 @@
+import { Route, Routes } from "react-router-dom";
+
 function App() {
   return (
-    <>
-      <div className="p-10 m-10 bg-red-500">hey</div>
-    </>
+    <div className="p-4 h-screen items-center justify-center">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </div>
   );
 }
 
