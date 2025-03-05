@@ -39,4 +39,6 @@ const useSignup = () => {
   return { loading, signup };
 };
 
+const useLogout = () => {};
+
 export default useSignup;
