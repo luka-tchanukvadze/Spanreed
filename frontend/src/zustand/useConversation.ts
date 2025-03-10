@@ -1,5 +1,5 @@
 import {create} from 'zustand'
-import { ConversationType } from '../types/global'
+import { ConversationType, MessageType } from '../types/global'
 
 // export type ConversationType = {
 //   id: string,
@@ -7,12 +7,12 @@ import { ConversationType } from '../types/global'
 //   profilePic: string
 // }
 
-type MessageType = {
-  id: string,
-  body: string,
-  senderId: string
+// type MessageType = {
+//   id: string,
+//   body: string,
+//   senderId: string
 
-}
+// }
 
 interface ConversationState{
   selectedConversation: ConversationType | null
