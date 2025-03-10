@@ -1,10 +1,11 @@
 import {create} from 'zustand'
+import { ConversationType } from '../types/global'
 
-type ConversationType = {
-  id: string,
-  fullName: string,
-  profilePic: string
-}
+// export type ConversationType = {
+//   id: string,
+//   fullName: string,
+//   profilePic: string
+// }
 
 type MessageType = {
   id: string,
