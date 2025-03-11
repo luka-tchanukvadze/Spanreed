@@ -1,5 +1,3 @@
-import { DUMMY_MESSAGES } from "../../dummy_data/dummy";
-import useGetConversations from "../../hooks/useGetConversations";
 import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
