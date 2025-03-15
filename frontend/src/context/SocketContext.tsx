@@ -20,7 +20,7 @@ export const useSocketContext = (): ISocketContext => {
   const context = useContext(SocketContext);
   if (context === undefined) {
     throw new Error(
-      "useSocketContext must be used within a SocketContextPRovider"
+      "useSocketContext must be used within a SocketContextProvider"
     );
   }
   return context;
