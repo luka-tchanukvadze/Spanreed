@@ -44,9 +44,17 @@ const SocketContextProvider = ({ children }: { children: ReactNode }) => {
       };
     } else if (!authUser && !isLoading) {
       if (socketRef.current) {
+        socketRef.current.close();
+        socketRef.current = null;
       }
     }
-  }, []);
+  }, [authUser, isLoading]);
+
+  return (
+    <SocketContext.Provider value={{ socket: socketRef.current, onlineUsers }}>
+      {children}
+    </SocketContext.Provider>
+  );
 };
 
 export default SocketContextProvider;
