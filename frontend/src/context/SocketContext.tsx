@@ -16,6 +16,16 @@ interface ISocketContext {
 
 const SocketContext = createContext<ISocketContext | undefined>(undefined);
 
+export const useSocketContext = (): ISocketContext => {
+  const context = useContext(SocketContext);
+  if (context === undefined) {
+    throw new Error(
+      "useSocketContext must be used within a SocketContextPRovider"
+    );
+  }
+  return context;
+};
+
 const socketURL =
   import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
