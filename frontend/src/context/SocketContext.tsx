@@ -16,6 +16,9 @@ interface ISocketContext {
 
 const SocketContext = createContext<ISocketContext | undefined>(undefined);
 
+const socketURL =
+  import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+
 const SocketContextProvider = ({ children }: { children: ReactNode }) => {
   const socketRef = useRef<Socket | null>(null);
 
@@ -24,7 +27,24 @@ const SocketContextProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (authUser && !isLoading) {
-      const socket = io(socketURL);
+      const socket = io(socketURL, {
+        query: {
+          userId: authUser.id,
+        },
+      });
+      socketRef.current = socket;
+
+      socket.on("getOnlineUsers", (users: string[]) => {
+        setOnlineUsers(users);
+      });
+
+      return () => {
+        socket.close();
+        socketRef.current = null;
+      };
+    } else if (!authUser && !isLoading) {
+      if (socketRef.current) {
+      }
     }
   }, []);
 };
