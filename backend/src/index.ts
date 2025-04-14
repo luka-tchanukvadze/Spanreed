@@ -11,12 +11,16 @@ dotenv.config()
 
 const PORT = process.env.PORT || 5001
 const __dirname = path.resolve()
+import job from './cron.js'
 
 app.use(cookieParser())
 app.use(express.json())
 
+job.start()
+
 app.use('/api/auth', authRoutes)
 app.use('/api/messages', messageRoutes)
+
 
 if(process.env.NODE_ENV !== 'development') {
   app.use(express.static(path.join(__dirname, '/frontend/dist')))
